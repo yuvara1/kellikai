@@ -1,0 +1,79 @@
+.post {
+     width: 100%;
+     border: 1px solid grey;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     margin-bottom: 20px;
+     border-radius: 10px;
+     overflow: hidden;
+     background-color: #1a1a1a;
+     color: white;
+}
+
+.profile {
+     display: flex;
+     width: 100%;
+     align-items: center;
+     justify-content: space-between;
+     padding: 10px;
+     border-bottom: 1px solid grey;
+}
+
+.profile div {
+     display: flex;
+     align-items: center;
+     gap: 1rem;
+}
+
+.userlogo {
+     cursor: pointer;
+     border-radius: 50%;
+     object-fit: cover;
+}
+
+.usercontent {
+     width: 100%;
+     height: auto;
+     object-fit: cover;
+     border-radius: 0 0 10px 10px;
+}
+
+.like {
+     display: flex;
+     align-items: center;
+     gap: 0.5rem;
+     padding: 10px;
+}
+
+i {
+     cursor: pointer;
+     transition: color 0.3s ease, background 0.3s ease;
+}
+
+i:hover {
+     color: white;
+     background: black;
+}
+
+i:active {
+     color: black;
+     background-color: white;
+}
+
+.likebutton {
+     display: flex;
+     align-items: center;
+     font-size: 1.5rem;
+     color: white;
+     cursor: pointer;
+     transition: color 0.3s ease;
+}
+
+.likebutton:hover {
+     color: #ff0000; /* Change color on hover */
+}
+
+.likebutton.liked {
+     color: #ff0000; /* Change color when liked */
+}

@@ -1,0 +1,93 @@
+* {
+     box-sizing: border-box;
+}
+
+.navbar {
+     position: fixed;
+     top: 0;
+     left: 0;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     width: 100%;
+     background-color: #000000;
+     color: white;
+     height: 50px;
+     padding: 20px;
+}
+
+#search {
+     opacity: 1;
+     /* width: 100%; */
+     box-sizing: border-box;
+     /* border: 2px solid #ccc; */
+     /* border-radius: 4px; */
+     font-size: 16px;
+     background-color: rgb(255, 255, 255);
+     background-image: url('D:\routing\route\public\search2.png');
+     background-position: left;
+     background-size: 25px 25px;
+     background-repeat: no-repeat;
+     padding: 6px 6px 6px 30px;
+}
+
+#search {
+     outline: none;
+     border-top: none;
+     border-right: none;
+     border-left: none;
+     background-color: transparent;
+     color: white;
+}
+
+
+.navbar div {
+     /* border: 1px solid white; */
+     display: flex;
+     /* max-width: 30%; */
+     overflow-x: hidden;
+     justify-content: space-between;
+     padding: 0;
+}
+
+.user {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     gap: 1rem;
+}
+
+.user .i {
+     display: "inline-block";
+     /* font-size: 40px; */
+     height: 2rem;
+     width: 2rem;
+     border-radius: 60%;
+     /* border: 1px solid white; */
+}
+
+#Link {
+     color: white;
+     text-decoration: none;
+     font-size: 1.2rem;
+}
+
+.logout {
+     position: absolute;
+     top: 50px;
+     right: 10px;
+     background-color: rgb(0, 0, 0);
+     
+     padding: 1rem;
+     border-radius: 5px;
+     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+     cursor: pointer;
+     z-index: 1000;
+}
+
+.logout p {
+     margin: 0;
+     color: rgb(255, 255, 255);
+     font-size: 14px;
+     padding: .5rem;
+}
