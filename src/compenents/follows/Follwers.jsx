@@ -7,6 +7,9 @@ import Navbar from '../routes/NavBar';
 import Users from '../routes/Users';
 
 function Follwers() {
+  const [user, setUser] = useState(localStorage.getItem('user'));
+  const [userId, setUserId] = useState(localStorage.getItem('user_id'));
+  const [userPhoto, setUserPhoto] = useState(localStorage.getItem('user_photo'));
   const [followings, setFollowings] = useState([]);
   const [error, setError] = useState(null); // State to handle errors
 
@@ -33,7 +36,7 @@ function Follwers() {
   useEffect(() => {
     const fetchFollowings = async () => {
       try {
-        const response = await axios.get('https://kellikai.onrender.com/followings', {
+        const response = await axios.get(`${host}/followings`, {
           params: { follower_id: localStorage.getItem('user_id') ? localStorage.getItem('user_id'):-1 }, // Pass follower_id dynamically
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,

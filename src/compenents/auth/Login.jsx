@@ -8,9 +8,12 @@ import { data, Link, useNavigate } from 'react-router-dom';
 import { LoginSocialFacebook } from 'reactjs-social-login';
 import Cookie from 'js-cookie';
 import { useEffect } from 'react';
+
 const Login = () => {
+  const host = import.meta.env.VITE_HOST;
   let [username, setUserName] = useState('');
   let [password, setPassword] = useState('');
+  
 
   const navigate = useNavigate();
 
@@ -23,7 +26,7 @@ const Login = () => {
     };
 
     try {
-      const response = await axios.post('https://kellikai.onrender.com/login', user);
+      const response = await axios.post(host, user);
 
 
       // Save user data to localStorage
@@ -35,6 +38,7 @@ const Login = () => {
 
       console.log('User logged in:', response.data.name);
       navigate('/post'); // Redirect to the posts page
+      window.location.reload();
     } catch (error) {
       if (error.response && error.response.status === 401) {
         document.getElementById('user').style.display = 'block';
@@ -57,8 +61,18 @@ const Login = () => {
             },
           }
         );
+        console.log('Google user data:', response.data);
+        console.log('Sending to backend:', {
+          name: response.data.name,
+          email: response.data.email,
+          photo: response.data.picture,
+        });
         console.log(response.data.picture);
-        await axios.post('https://kellikai.onrender.com/googlelogin', { name: response.data.name, email: response.data.email, photo: response.data.picture })
+        await axios.post(`${host}/googlelogin`, {
+          name: response.data.name,
+          email: response.data.email,
+          photo: response.data.picture,
+        })
           .then((res) => {
             if (res.status == 409) {
               alert('Invalid email');
@@ -73,9 +87,10 @@ const Login = () => {
                 Cookie.set('id', res.data.id);
                 console.log(Cookie.get('id'));
                 navigate('/post');
-                
-              }, 100);
-              
+                window.location.reload();
+
+              }, 500);
+
             }
           });
       } catch (error) {
@@ -85,12 +100,11 @@ const Login = () => {
   });
 
   const facebookLogin = (res) => {
-    axios
-      .post('https://kellikai.onrender.com/facebooklogin', {
-        name: res.name,
-        email: res.email,
-        photo: res.picture.data.url, // Ensure the photo URL is passed correctly
-      })
+    axios.post(`${process.env.HOST}/facebooklogin`, {
+      name: res.name,
+      email: res.email,
+      photo: res.picture.data.url,
+    })
       .then((response) => {
         if (response.data === 'invalid email') {
           alert('Invalid email');
@@ -103,6 +117,7 @@ const Login = () => {
           localStorage.setItem('user', res.name);
           localStorage.setItem('photo', res.picture.data.url);
           navigate('/post');
+          window.location.reload();
         } else {
           // Handle case where user already exists
           Cookie.set('id', response.data.user_id);
@@ -110,6 +125,7 @@ const Login = () => {
           localStorage.setItem('user', res.name);
           localStorage.setItem('photo', res.picture.data.url); // Ensure the photo URL is passed correctly
           navigate('/post');
+          window.location.reload();
         }
       })
       .catch((error) => {

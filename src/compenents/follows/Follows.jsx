@@ -5,8 +5,10 @@ import SideBar from '../routes/SideBar';
 import Users from '../routes/Users';
 import axios from 'axios';
 import { useFetcher } from 'react-router-dom';
+import { meta } from '@eslint/js';
 
 function follows(props) {
+     const host = import.meta.env.VITE_HOST;
      console.log('propes: ' + props);
      console.log('props id: ' + props.id);
      console.log(localStorage.getItem('user_id'));
@@ -14,7 +16,7 @@ function follows(props) {
      useEffect(() => {
           const fetchFollowings = async () => {
                try {
-                    const response = await axios.get('https://kellikai.onrender.com/followings', {
+                    const response = await axios.get(`${host}/followings`, {
                          params: { follower_id: localStorage.getItem('user_id') ? localStorage.getItem('user_id') : -1 }, // Pass follower_id dynamically
                          headers: {
                               Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -29,7 +31,7 @@ function follows(props) {
      }, []); // Run only once on component mount
      function handleRemove() {
           console.log('remove');
-          const response = axios.delete('https://kellikai.onrender.com/unfollow', {
+          const response = axios.delete(`${host}/unfollow`, {
                params: { follower_id: localStorage.getItem('user_id'), following_id: props.id },
                headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,

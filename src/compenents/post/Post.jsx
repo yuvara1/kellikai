@@ -8,11 +8,12 @@ import './Post.css';
 
 const Post = () => {
   const [data, setData] = useState([]);
-
+  const host = import.meta.env.VITE_HOST;
+  
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('https://kellikai.onrender.com/getallposts');
+        const response = await axios.get(`${host}/getallposts`);
         setData(response.data);
         console.log('Fetched posts:', response.data);
       } catch (error) {

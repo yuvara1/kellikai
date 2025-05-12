@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "host": "vite --host",
-    "start": "nodemon D:\\KELLIKAI\\main\\src\\server\\server.cjs"
+    "start": "nodemon D:\\production\\main\\src\\server\\server.cjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

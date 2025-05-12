@@ -4,6 +4,7 @@ import { HiUserAdd } from "react-icons/hi";
 import Cookie from "js-cookie";
 import { useEffect } from "react";
 const Friends = (props) => {
+     const host = import.meta.env.VITE_HOST;
      const { id, img, username, followedUsers } = props;
 
      console.log('Props:', props.id);
@@ -17,7 +18,7 @@ const Friends = (props) => {
           console.log('Token:', token);
           console.log('Followed User ID:', id);
 
-          axios.post('https://kellikai.onrender.com/followuser', {
+          axios.post(`${host}/followuser`, {
                follower_id: userId, // Send follower_id
                followed_id: id, // Send followed_id
           }, {

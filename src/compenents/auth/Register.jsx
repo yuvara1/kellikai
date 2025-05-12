@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
 
 const Register = () => {
+  const host = import.meta.env.VITE_HOST;
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -46,7 +47,7 @@ const Register = () => {
     formData.append('user_photo', image); // Append the image file
 
     axios
-      .post('https://kellikai.onrender.com/register', formData, {
+      .post(`${host}/register`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

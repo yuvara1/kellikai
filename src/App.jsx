@@ -10,6 +10,31 @@ import PageNotFound from './compenents/page not found/PageNotFound.jsx';
 import PrivateRoute from './compenents/routes/PrivateRoute.jsx';
 
 function App() {
+  const styles = {
+    main: {
+      display: 'flex',
+      backgroundColor: 'black',
+      height: ' 100vh',
+      justifyContent: 'center',
+      alignItems: 'center',
+      color: 'white',
+      padding: '20px',
+    }
+  }
+
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    return (
+      <div style={styles.main}>
+        <div>
+          <h1>Mobile Version</h1>
+          <p>Sorry, this application is not available on mobile devices.</p>
+          <p>Please use a desktop or laptop to access the full features.</p>
+          <p>Thank you for your understanding!</p>
+        </div>
+      </div>
+    );
+  }
   return (
     <>
       <BrowserRouter>

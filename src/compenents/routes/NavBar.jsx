@@ -14,7 +14,7 @@ export default function Navbar() {
           const fetchPhoto = async () => {
                try {
                     const response = await axios.get(
-                         `https://kellikai.onrender.com/profilePic?name=${localStorage.getItem('user')}`,
+                         `${process.env.HOST}/profilePic?name=${localStorage.getItem('user')}`,
                          {
                               headers: {
                                    Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -37,7 +37,7 @@ export default function Navbar() {
 
      // Handle user logout
      function handleLogOut() {
-          console.log('Photo URL before logout:', localStorage.getItem('photo'));
+  
           localStorage.clear(); // Clear user data
           Cookie.remove('id'); // Remove the cookie
           navigate('/'); // Redirect to the login page
@@ -58,7 +58,7 @@ export default function Navbar() {
                <div>
                     <div className="user" onClick={handleLogOutClick}>
                          <p>{localStorage.getItem('user')}</p>
-                         <img className="i" src={photo || '/default-profile.png'} alt="user" /> {/* Fallback to default image */}
+                         <img className="i" src={photo || localStorage.getItem('photo')} alt="user" /> {/* Fallback to default image */}
                     </div>
                     {showLogOut && ( // Conditionally render the logout menu
                          <div className="logout" id="logout" onClick={handleLogOut}>

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
 
 const Upload = () => {
+     const host = import.meta.env.VITE_HOST;
      const [image, setImage] = useState(null);
      const [caption, setCaption] = useState('');
      const [preview, setPreview] = useState(null); // Store the image preview URL
@@ -103,13 +104,22 @@ const Upload = () => {
           formData.append('image', image);
           formData.append('caption', caption);
 
+          console.log('FormData:', {
+               name: localStorage.getItem('user'),
+               image: image,
+               caption: caption,
+          });
+
           console.log(formData.get('name'));
           console.log(formData.get('image'));
           console.log(formData.get('caption'));
           console.log(image);
 
+          console.log('Uploaded file:', image);
+          console.log('Request body:', { name: localStorage.getItem('user'), caption });
+
           try {
-               const response = await axios.post('https://kellikai.onrender.com/uploadpost', formData, {
+               const response = await axios.post(`${host}/uploadpost`, formData, {
                     headers: {
                          'Content-Type': 'multipart/form-data'
                     }

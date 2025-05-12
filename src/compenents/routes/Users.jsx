@@ -7,21 +7,23 @@ import img from './rabit.jpg';
 export default function Users() {
   const [followings, setFollowings] = useState([]);
   const [followedUsers, setFollowedUsers] = useState([]); // State to store followed user IDs
-
+  const host = import.meta.env.VITE_HOST;
   useEffect(() => {
+    console.log('Fetching followings...');
     const fetchFollowings = async () => {
       try {
-        const res = await axios.get(`https://kellikai.onrender.com/getallusers?name=${localStorage.getItem('user')}`);
+        const res = await axios.get(`${host}/getallusers?name=${localStorage.getItem('user')}`);
+        console.log('Followings:', res.data);
         setFollowings(res.data);
 
         // Fetch the list of followed user IDs
-        const followedRes = await axios.get('https://kellikai.onrender.com/followings', {
+        const followedRes = await axios.get(`${host}/followings`, {
           params: { follower_id: localStorage.getItem('user_id') },
         });
         const followedIds = followedRes.data.map((user) => user.id);
         setFollowedUsers(followedIds); // Store followed user IDs
       } catch (err) {
-        console.log(err);
+        console.error('Error fetching followings:', err);
       }
     };
     fetchFollowings();
