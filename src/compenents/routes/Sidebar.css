@@ -1,0 +1,66 @@
+aside {
+     position: fixed;
+     top: 80px;
+     left: 2%;
+     width: 18%;
+     height: 80%;
+     background: var(--card-bg);
+     color: var(--text-main);
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 24px;
+     border-radius: var(--radius);
+     box-shadow: var(--shadow);
+     font-family: 'Montserrat', sans-serif;
+}
+
+.menu {
+     display: flex;
+     align-items: center;
+     gap: 18px;
+     width: 90%;
+     padding: 12px 0;
+     border-radius: var(--radius);
+     color: var(--text-main);
+     text-decoration: none;
+     font-size: 1.1rem;
+     font-weight: 600;
+     transition: background 0.2s, color 0.2s;
+}
+
+.menu:hover {
+     background: var(--accent-light);
+     color: var(--primary-bg);
+}
+
+.menu.active {
+     background: var(--accent);
+     color: var(--primary-bg);
+}
+
+.menu .i {
+     font-size: 28px;
+     color: var(--accent);
+     transition: color 0.2s;
+}
+
+.menu.active .i,
+.menu:hover .i {
+     color: var(--primary-bg);
+}
+
+.menu p {
+     margin: 0;
+}
+
+@media (max-width: 768px) {
+     aside {
+          width: 60px;
+          gap: 10px;
+     }
+
+     .menu p {
+          display: none;
+     }
+}
