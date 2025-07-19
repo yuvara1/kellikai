@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+     padding: 0;
+     margin: 0;
+     /* background-color: var(--bg-color); */
+     font-family: 'Inter';
+}
+
+a {
+     font-weight: 800;
+     color: black;
+}
+
+#clon {
+     z-index: 111;
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     color: rgb(255, 255, 255);
+     background-image: url("clone.png");
+
+     background-repeat: no-repeat;
+     top: 10%;
+     left: 50vw;
+}
+
+:root {
+     --bg-color: rgb(255, 255, 255);
+}
+
+#bgimage {
+     display: block;
+     position: absolute;
+     height: 100vh;
+     width: 100%;
+
+     background-image: url("rabit.jpg");
+     background-position: center center;
+     z-index: -1;
+     filter: grayscale(100%);
+}
+
+#login {
+     position: relative;
+     height: 100vh;
+     width: 50%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     /* border: 1px solid pink; */
+     background-color: black;
+     color: white !important;
+     /* overflow-y: hidden; */
+}
+
+#bodyform {
+     height: 90%;
+     width: 50%;
+     border: 1px solid black;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: space-around;
+}
+
+form {
+     height: 130%;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-evenly;
+     /* border: 1px solid rgb(8, 8, 1); */
+     padding: 20px;
+}
+
+form div {
+     position: relative;
+}
+
+form .Label {
+     position: absolute;
+     left: 15px;
+     top: 25%;
+     z-index: 11;
+     background-color: rgba(0, 0, 0, 0.859);
+     transition: all .5s;
+     padding: 0 5px;
+
+}
+
+form .Input {
+     top: 20px;
+     width: 100%;
+     height: 40px;
+     background-color: transparent;
+     color: white;
+     border: none;
+     border-bottom: 1px solid rgb(255, 255, 255);
+     transition: all .5s;
+     box-sizing: border-box;
+     padding: 5px 10px;
+     padding-top: 10px;
+     font-size: 20px;
+}
+
+.Input:focus {
+     outline: none;
+     z-index: -1;
+}
+
+button {
+     width: 100%;
+     height: 30px;
+     margin-top: 20px;
+
+     border-radius: 5px;
+     cursor: pointer;
+     transition: all .5s;
+}
+
+div .Input:not(:placeholder-shown):valid {
+     border: 1px solid rgb(33, 142, 33);
+}
+
+div .Input:focus+.Label,
+div .Input:valid+.Label,
+div .Input:hover+.Label {
+     transform: translateY(-100%);
+}
+
+.Label:hover {
+     transform: translateY(-100%);
+}
+
+.name {
+     text-align: center;
+}
+
+span {
+     padding: 5px;
+     display: flex;
+     align-items: center;
+     cursor: pointer;
+     box-sizing: border-box;
+     border: 1px solid rgb(252, 252, 252);
+
+}
+
+.span div {
+     display: flex;
+     align-items: end;
+
+     width: 30%;
+     justify-content: center;
+}
+
+.icon {
+     height: 35px;
+     width: 35px;
+}
+
+::-webkit-scrollbar {
+     scrollbar-width: thin;
+}
+
+.dropzone {
+     border: 2px dashed #ccc;
+     border-radius: 10px;
+     padding: 20px;
+     text-align: center;
+     cursor: pointer;
+     margin-bottom: 20px;
+}
+
+.dropzone p {
+     color: #666;
+     font-size: 14px;
+}
+
+.preview {
+     width: 100px;
+     height: 100px;
+     object-fit: cover;
+     border-radius: 50%;
+     margin-top: 10px;
+}

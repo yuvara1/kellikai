@@ -1,0 +1,192 @@
+/* Modern Black & White Theme with Typography and Performance Improvements */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+:root {
+     --primary-bg: #000000;
+     --secondary-bg: #121212;
+     --text-primary: #ffffff;
+     --text-secondary: #e0e0e0;
+     --accent: #404040;
+     --highlight: #ffffff;
+     --border: rgba(255, 255, 255, 0.2);
+     --shadow: rgba(0, 0, 0, 0.4);
+     --transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+* {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+}
+
+body {
+     font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 64px;
+     background: var(--primary-bg);
+     color: var(--text-main);
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 0 32px;
+     box-shadow: var(--shadow);
+     z-index: 1000;
+     font-family: 'Montserrat', sans-serif;
+}
+
+.navbar div {
+     display: flex;
+     align-items: center;
+}
+
+/* Logo section */
+.logo {
+     height: 48px;
+     width: 48px;
+     border-radius: 50%;
+     box-shadow: 0 2px 8px var(--accent-light);
+     transition: transform 0.2s;
+}
+
+.logo:hover {
+     transform: scale(1.08);
+     box-shadow: 0 0 16px var(--accent);
+}
+
+#Link {
+     color: var(--accent);
+     font-weight: 700;
+     font-size: 1.3rem;
+     text-decoration: none;
+     margin-left: 12px;
+     letter-spacing: 0.05em;
+}
+
+/* Search section */
+.search-container {
+     flex: 1;
+     max-width: 400px;
+     margin: 0 32px;
+     position: relative;
+}
+
+#search {
+     width: 100%;
+     height: 40px;
+     background: var(--input-bg);
+     border: 2px solid var(--input-border);
+     border-radius: var(--radius);
+     padding: 0 16px 0 44px;
+     font-size: 1rem;
+     color: var(--text-main);
+     transition: border 0.2s;
+     font-family: 'Fira Sans', sans-serif;
+}
+
+#search:focus {
+     outline: none;
+     border-color: var(--accent);
+     background: #23233a;
+}
+
+.search-icon {
+     position: absolute;
+     left: 16px;
+     top: 50%;
+     transform: translateY(-50%);
+     color: var(--accent);
+     font-size: 22px;
+}
+
+/* User section */
+.user {
+     display: flex;
+     align-items: center;
+     gap: 14px;
+     cursor: pointer;
+     padding: 8px 18px;
+     border-radius: 24px;
+     background: var(--card-bg);
+     transition: background 0.2s;
+}
+
+.user:hover {
+     background: var(--accent-light);
+     color: var(--primary-bg);
+}
+
+.user p {
+     font-size: 1rem;
+     font-weight: 700;
+     letter-spacing: 0.04em;
+     color: white;
+}
+
+.user .i {
+     height: 36px;
+     width: 36px;
+     border-radius: 50%;
+     object-fit: cover;
+     border: 2px solid var(--accent);
+     transition: border 0.2s;
+}
+
+.user:hover .i {
+     border-color: var(--primary-bg);
+}
+
+/* Logout dropdown */
+.logout {
+     position: absolute;
+     top: 70px;
+     right: 32px;
+     background: var(--card-bg);
+     color: var(--accent);
+     padding: 12px 24px;
+     border-radius: var(--radius);
+     box-shadow: var(--shadow);
+     font-weight: 700;
+     cursor: pointer;
+     animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+     to {
+          opacity: 1;
+          transform: translateY(0);
+     }
+}
+
+.logout p {
+     margin: 0;
+     font-size: 1rem;
+     transition: background 0.2s;
+}
+
+.logout p:hover {
+     background: var(--accent-light);
+     color: var(--primary-bg);
+     border-radius: var(--radius);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+     .navbar {
+          padding: 0 12px;
+     }
+
+     .search-container {
+          max-width: 160px;
+          margin: 0 8px;
+     }
+
+     .user p {
+          display: none;
+     }
+}
